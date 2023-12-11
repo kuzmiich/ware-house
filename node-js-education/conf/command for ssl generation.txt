@@ -1,0 +1,1 @@
+req -x509 -config "C:\Users\240Dell\Downloads\openssl-0.9.8k_X64\openssl.cnf" -newkey rsa:4096 -keyout key.pem -out cert.pem -nodes -days 900

@@ -1,0 +1,4 @@
+Id,Title,NettoCost,ActualPrice,Description,WareHouseId
+1,table AAA,50,80,This is a very good table,1
+2,chair DDD,10,40,This is a very good chair,1
+3,pen ABC,1,3,This is a very good pen,1

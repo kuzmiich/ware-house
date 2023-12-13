@@ -1,13 +1,13 @@
 'use strict';
-var tls = require('tls');
-var fs = require('fs');
+const tls = require('tls');
+const fs = require('fs');
 const PORT = 1337;
 const HOST = '127.0.0.1'
-var options = {
+const options = {
     key: fs.readFileSync('conf/private-key.pem'),
     cert: fs.readFileSync('conf/public-cert.pem')
 };
-var server = tls.createServer(options, function (socket) {
+const server = tls.createServer(options, function (socket) {
     // Send a friendly message
     socket.write("I am the server sending you a message.");
     // Print the data that we received

@@ -1,7 +1,7 @@
 import { writeToFile } from './csvWriter.js';
 import { readProducts } from './csvReader.js';
 
-function main() {
+export function initDatabase() {
   // console.log("Start write file");
   // writeToFile();
   // console.log("End write file");
@@ -10,5 +10,3 @@ function main() {
   let products = readProducts(inFilePath);
   console.log(JSON.stringify(products, ','));
 }
-
-main();

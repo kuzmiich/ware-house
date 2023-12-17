@@ -97,6 +97,7 @@ export class ProductService {
 
     response.message = ResponseHelper.success.message;
     response.statusCode = ResponseHelper.success.statusCode;
+    response.data = deletedProduct;
     return response;
   }
 }

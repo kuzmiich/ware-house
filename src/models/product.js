@@ -1,3 +1,4 @@
+import { Decimal128 } from 'mongodb';
 import { Schema, mongoose } from 'mongoose';
 
 const ProductSchema = new Schema({
@@ -6,11 +7,11 @@ const ProductSchema = new Schema({
 		required: true
 	},
 	nettoCost: {
-		type: Number,
+		type: Decimal128,
 		required: true
 	},
 	actualPrice: {
-		type: Number,
+		type: Decimal128,
 		required: true
 	},
 	description: {

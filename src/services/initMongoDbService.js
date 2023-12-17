@@ -1,5 +1,19 @@
 import readDatas from '../io/jsonReader.js';
 
+export async function initializeDatabase(database) {
+  
+  let products = readProducts();
+
+  await initializeCollection(database, 'products', products);
+  
+  let workers = readWorkers();  
+  await initializeCollection(database, 'workers', workers);
+
+  
+  let wareHouses = readWareHouses();
+  await initializeCollection(database, 'wareHouses', wareHouses);
+}
+
 const readProducts = () => {
 
   const inFilePath = "./data/products.json";
@@ -16,20 +30,6 @@ const readWareHouses = () => {
   
   const inFilePath = "./data/wareHouses.json";
   return readDatas(inFilePath);
-}
-
-export async function initializeDatabase(database) {
-  
-  let products = readProducts();
-
-  await initializeCollection(database, 'products', products);
-  
-  let workers = readWorkers();  
-  await initializeCollection(database, 'workers', workers);
-
-  
-  let wareHouses = readWareHouses();
-  await initializeCollection(database, 'wareHouses', wareHouses);
 }
 
 async function initializeCollection(database, collectionName, documentsToInsert) {

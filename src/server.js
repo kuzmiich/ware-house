@@ -6,6 +6,10 @@ import wareHouseRouter from './routes.js';
 import { WareHouseMongoURI } from '../config/database.js';
 import { initializeDatabase } from './services/initMongoDbService.js';
 
+new Server()
+  .build()
+  .run();
+
 class Server {
 
   constructor() {
@@ -53,12 +57,8 @@ class Server {
 
     const port = process.env.API_PORT || 1818;
 
-    console.log(`User server started and listening on url - http://localhost:${port}/api/v1/products`);
+    console.log(`User server started and listening on url - http://localhost:${port}/api/v1/`);
   
     this.app.listen(port);
   }
 }
-
-new Server()
-  .build()
-  .run();

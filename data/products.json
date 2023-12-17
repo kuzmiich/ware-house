@@ -1,0 +1,23 @@
+[
+  {
+    "Title": "table AAA",
+    "NettoCost": 50,
+    "ActualPrice": 80,
+    "Description": "This is a very good table",
+    "WareHouseId": 1
+  },
+  {
+    "Title": "pen ABC",
+    "NettoCost": 1,
+    "ActualPrice": 3,
+    "Description": "This is a very good pen",
+    "WareHouseId": 1
+  },
+  {
+    "Title": "chair DDD",
+    "NettoCost": 10,
+    "ActualPrice": 40,
+    "Description": "This is a very good chair",
+    "WareHouseId": 1
+  }
+]

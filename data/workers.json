@@ -1,0 +1,30 @@
+[
+  {
+    "FirstName": "Oleg",
+    "LastName": "Tinkov",
+    "Role": "director",
+    "Salary": 3000,
+    "WareHouseId": 1
+  },
+  {
+    "FirstName": "Clara",
+    "LastName": "Zaberman",
+    "Role": "manager",
+    "Salary": 500,
+    "WareHouseId": 1
+  },
+  {
+    "FirstName": "Irina",
+    "LastName": "Idk",
+    "Role": "worker",
+    "Salary": 300,
+    "WareHouseId": 1
+  },
+  {
+    "FirstName": "Tihon",
+    "LastName": "Grishin",
+    "Role": "worker",
+    "Salary": 250,
+    "WareHouseId": 1
+  }
+]

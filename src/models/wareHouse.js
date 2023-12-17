@@ -1,20 +1,32 @@
-export class WareHouse {
-  
-  constructor(id, name, rentalCost = 0, assignmentDate, products, workers) {
-    this.id = id;
-    this.name = name;
-    this.rentalCost = rentalCost;
-    this.assignmentDate = assignmentDate;
-    this.products = products;
-    this.workers = workers;
-  }
+import { Schema, mongoose } from 'mongoose';
+import ProductDto from './productDto';
+import WorkerDto from './workerDto';
 
-  get totalRevenues() {
-    if (!(this.products && this.workers))
-      return 0;
+const WareHouseSchema = new Schema({
+  name: {
+		type: String,
+		required: true
+	},
+  rentalCost: {
+		type: String,
+		required: true
+	},
+  assignmentDate: {
+		type: String,
+		required: true
+	},
+  product: {
+    type: ProductDto,
+    required: false
+  },
+  workers: {
+    type: WorkerDto,
+    required: false
+  },
+}, 
+{
+	collection: 'wareHouse'
+});
 
-    return this.products.reduce((sum, current) => sum + current.revenue, 0)
-      - this.workers.reduce((sum, current) => sum + current.salary, 0)
-      - this.rentalCost;
-  }
-}
+
+export default mongoose.model('WareHouse', WareHouseSchema);

@@ -1,0 +1,60 @@
+[
+  {
+    "Name": "table AAA",
+    "RentalCost": 50,
+    "AssignmentDate": "20.03.2000",
+    "Products": [
+      {
+        "Title": "table AAA",
+        "NettoCost": 50,
+        "ActualPrice": 80,
+        "Description": "This is a very good table",
+        "WareHouseId": 1
+      },
+      {
+        "Title": "pen ABC",
+        "NettoCost": 1,
+        "ActualPrice": 3,
+        "Description": "This is a very good pen",
+        "WareHouseId": 1
+      },
+      {
+        "Title": "chair DDD",
+        "NettoCost": 10,
+        "ActualPrice": 40,
+        "Description": "This is a very good chair",
+        "WareHouseId": 1
+      }
+    ],
+    "Workers": [
+      {
+        "FirstName": "Oleg",
+        "LastName": "Tinkov",
+        "Role": "director",
+        "Salary": 3000,
+        "WareHouseId": 1
+      },
+      {
+        "FirstName": "Clara",
+        "LastName": "Zaberman",
+        "Role": "manager",
+        "Salary": 500,
+        "WareHouseId": 1
+      },
+      {
+        "FirstName": "Irina",
+        "LastName": "Idk",
+        "Role": "worker",
+        "Salary": 300,
+        "WareHouseId": 1
+      },
+      {
+        "FirstName": "Tihon",
+        "LastName": "Grishin",
+        "Role": "worker",
+        "Salary": 250,
+        "WareHouseId": 1
+      }
+    ]
+  }
+]

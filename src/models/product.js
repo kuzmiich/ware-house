@@ -21,7 +21,9 @@ const ProductSchema = new Schema({
 		type: String,
 		required: true
 	}
+}, 
+{
+	collection: 'products'
 });
-
 
 export default mongoose.model('Product', ProductSchema);

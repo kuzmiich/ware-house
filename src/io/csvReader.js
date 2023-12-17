@@ -1,26 +1,18 @@
 import fs from 'fs';
 import csv from 'csv-parser';
 
-export function readProducts(inFilePath) {
+export function readDatas(inFilePath) {
   if (!fs.existsSync(inFilePath)) return;
 
-  var products = [];
+  var datas = [];
   fs.createReadStream(inFilePath)
-    .pipe(csv())
-    .on('data', function (product) {
-      products.push(product);
+    .pipe(csv({ cast_date: true }))
+    .on('data', function (obj) {
+      datas.push(obj);
     })
     .on('end', function () {
-      console.log(products);
+      console.log(datas);
     });
 
-  return products;
-}
-
-export function readWareHouses() {
-
-}
-
-export function readWorkers() {
-
+  return datas;
 }

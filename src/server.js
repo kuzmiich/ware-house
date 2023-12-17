@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import ResponseHelper from './constants.js';
 import wareHouseRouter from './routes.js';
 import { WareHouseMongoURI } from '../config/database.js';
+import { initializeDatabase } from './services/initMongoDbService.js';
 
 class Server {
 
@@ -15,7 +16,13 @@ class Server {
     this.app.use(express.json());
 
     mongoose.connect(WareHouseMongoURI, {})
-      .then(() => console.log('Mongo Db Connected !'))
+      .then(() => {
+        console.log('Mongo Db Connected !');
+        
+        const db = mongoose.connection.db;
+
+        initializeDatabase(db);
+      })
       .catch((err) => console.log(err));
 
     // routes

@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "node-7z-archive": "^1.1.7"
+  }
+}

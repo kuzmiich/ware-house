@@ -1,6 +1,4 @@
 import { Schema, mongoose } from 'mongoose';
-import ProductDto from './productDto';
-import WorkerDto from './workerDto';
 
 const WareHouseSchema = new Schema({
   name: {
@@ -12,20 +10,20 @@ const WareHouseSchema = new Schema({
 		required: true
 	},
   assignmentDate: {
-		type: String,
+		type: Date,
 		required: true
 	},
-  product: {
-    type: ProductDto,
+  products: {
+    type: [],
     required: false
   },
   workers: {
-    type: WorkerDto,
+    type: [],
     required: false
   },
 }, 
 {
-	collection: 'wareHouse'
+	collection: 'wareHouses'
 });
 
 

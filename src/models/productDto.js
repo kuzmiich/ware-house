@@ -11,7 +11,7 @@ export default class ProductDto {
 	}
 	
 	get Revenue() {
-		if (!(this.actualPrice && this.nettoCost))
+		if (!!this.actualPrice || !!this.nettoCost)
 			return 0;
 
 		return this.actualPrice - this.nettoCost;

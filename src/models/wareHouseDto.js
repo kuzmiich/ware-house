@@ -1,3 +1,5 @@
+import ProductDto from './productDto.js'
+
 export default class WareHouseDto {
   
   constructor({ id, name, rentalCost = 0, assignmentDate, products, workers }) {
@@ -11,11 +13,14 @@ export default class WareHouseDto {
   }
 
   get TotalRevenues() {
-    if (!(this.products && this.workers))
-      return 0;
+    let productsTotalRevenue = this.products.reduce((sum, product) =>
+    { 
+      let productDto = new ProductDto(product);
+      return sum + productDto.revenue;
+    }, 0);
 
-    return this.products.reduce((sum, current) => sum + current.revenue, 0)
-      - this.workers.reduce((sum, current) => sum + current.salary, 0)
+    return (!!this.products ? productsTotalRevenue : 0)
+      - (!!this.workers ? this.workers.reduce((sum, worker) => sum + worker.salary, 0) : 0)
       - this.rentalCost;
   }
 }

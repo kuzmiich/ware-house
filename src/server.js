@@ -1,14 +1,10 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 
 import ResponseHelper from './constants.js';
 import wareHouseRouter from './routes.js';
-import { WareHouseMongoURI } from '../config/database.js';
 import { initializeDatabase } from './services/initMongoDbService.js';
-
-new Server()
-  .build()
-  .run();
 
 class Server {
 
@@ -17,9 +13,14 @@ class Server {
   }
 
   build() {
+
+    console.log(`Environment - '${process.env.NODE_ENV}'`); // to use NODE_ENV need to install -> npm install -g win-node-env
+
+    dotenv.config({ path: `./src/environments/.env.${process.env.NODE_ENV ?? 'test'}` });
+
     this.app.use(express.json());
 
-    mongoose.connect(WareHouseMongoURI, {})
+    mongoose.connect(process.env.CONNECTION_STRING, {})
       .then(() => {
         console.log('Mongo Db Connected !');
         
@@ -57,8 +58,12 @@ class Server {
 
     const port = process.env.API_PORT || 1818;
 
-    console.log(`User server started and listening on url - http://localhost:${port}/api/v1/`);
-  
-    this.app.listen(port);
+    this.app.listen(port, () => {
+      console.log(`User server started and listening on port - ${port}`);
+    });
   }
 }
+
+new Server()
+  .build()
+  .run();

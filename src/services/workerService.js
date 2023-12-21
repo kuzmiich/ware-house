@@ -1,88 +1,89 @@
 import ResponseHelper from '../constants.js';
-import ProductSchema from '../models/product.js';
+import WorkerSchema from '../models/worker.js';
 
-export class ProductService {
+export class WorkerService {
 
   constructor() {
-    this.productSchema = ProductSchema;
+    this.workerSchema = WorkerSchema;
   }
 
-  async getAllProducts() {
+  async getAllWorkers() {
     const response = {};
-    const products = await this.productSchema.find({});
+    const workers = await this.workerSchema.find({});
     
-    if (!products) {
+    if (!workers) {
       response.message = ResponseHelper.recordNotFound.message;
       response.statusCode = ResponseHelper.recordNotFound.statusCode;
       return response;
     }
     response.message = ResponseHelper.success.message;
     response.statusCode = ResponseHelper.success.statusCode;
-    response.data = products;
+    response.data = workers;
     return response;
   }
 
-  async addProduct(req) {
-    const { title, nettoCost, actualPrice, description, wareHouseId } = req.body;
+  async addWorker(req) {
+    const { firstName, lastName, role, salary, wareHouseId } = req.body;
     const response = {};
 
-    const product = await this.productSchema.create({ title, nettoCost, actualPrice, description, wareHouseId });
+    const addedWorker = await this.workerSchema.create({ firstName, lastName, role, salary, wareHouseId });
 
-    if (!product) {
+    if (!addedWorker) {
       response.message = ResponseHelper.serverError.message;
       response.statusCode = ResponseHelper.serverError.statusCode;
       return response;
     }
     response.message = ResponseHelper.requestCreated.message;
     response.statusCode = ResponseHelper.requestCreated.statusCode;
-    response.data = product;
+    response.data = addedWorker;
     return response;
   }
 
-  async getProductById(req) {
+  async getWorkerById(req) {
     const response = {};
     const { id } = req.params;
 
-    const product = await this.productSchema.findOne({ '_id': id });
+    const worker = await this.workerSchema.findOne({ '_id': id });
 
-    if (!product) {
+    if (!worker) {
       response.message = ResponseHelper.recordNotFound.message;
       response.statusCode = ResponseHelper.recordNotFound.statusCode;
       return response;
     }
     response.message = ResponseHelper.success.message;
     response.statusCode = ResponseHelper.success.statusCode;
-    response.data = product;
+    response.data = worker;
     return response;
   }
 
-  async updateProductById(req) {
-    const { title, nettoCost, actualPrice, description, wareHouseId } = req.body;
+  async updateWorkerById(req) {
+    const { firstName, lastName, role, salary, wareHouseId } = req.body;
     const response = {};
     const { id } = req.params;
     
-    const updatedProduct = await this.productSchema.findOneAndUpdate({ '_id': id },
-      { $set: { title, nettoCost, actualPrice, description, wareHouseId } },
+    const updatedWorker = await this.workerSchema.findOneAndUpdate({ '_id': id },
+      { $set: { firstName, lastName, role, salary, wareHouseId } },
       { new: true });
 
-    if (!updatedProduct) {
+    if (!updatedWorker) {
       response.message = ResponseHelper.recordNotFound.message;
       response.statusCode = ResponseHelper.recordNotFound.statusCode;
       return response;
     }
+
     response.message = ResponseHelper.success.message;
     response.statusCode = ResponseHelper.success.statusCode;
-    response.data = updatedProduct;
+    response.data = updatedWorker;
     return response;
   }
 
-  async deleteProductById(req) {
+  async deleteWorkerById(req) {
     const response = {};
     const { id } = req.params;
 
-    const deletedProduct = await this.productSchema.findOneAndDelete({ '_id': id });
+    const deletedWorker = await this.workerSchema.findOneAndDelete({ '_id': id });
 
-    if (!deletedProduct) {
+    if (!deletedWorker) {
       response.message = ResponseHelper.recordNotFound.message;
       response.statusCode = ResponseHelper.recordNotFound.statusCode;
       return response;
@@ -90,7 +91,7 @@ export class ProductService {
 
     response.message = ResponseHelper.success.message;
     response.statusCode = ResponseHelper.success.statusCode;
-    response.data = deletedProduct;
+    response.data = deletedWorker;
     return response;
   }
 }

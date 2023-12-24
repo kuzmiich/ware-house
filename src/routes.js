@@ -7,10 +7,10 @@ import { addWareHouse, updateWareHouseById, getAllWareHouses } from './controlle
 const router = Router();
 
 const productValidators = [
-  body('title').isLength({ min: 5, max: 40 }),
+  body('title').isLength({ min: 5, max: 40 }).withMessage("Title length must be between 5 and 40 symbols"),
   body('nettoCost').isCurrency(),
   body('actualPrice').isCurrency(),
-  body('description').isLength({ min: 5 })
+  body('description').isLength({ min: 5 }).withMessage("Description length must be more then 5 symbols")
 ];
 
 router.post('/product', productValidators, addProduct);
@@ -20,9 +20,9 @@ router.put('/product/:id', productValidators, updateProductById);
 router.delete('/product/:id', deleteProductById);
 
 const workerValidators = [
-  body('firstName').isLength({ min: 5, max: 40 }),
-  body('lastName').isLength({ min: 5, max: 40 }),
-  body('role').isLength({ min: 5, max: 40 }),
+  body('firstName').isLength({ min: 3, max: 40 }).withMessage("First Name length must be between 3 and 40 symbols"),
+  body('lastName').isLength({ min: 3, max: 40 }).withMessage("Last Name length must be between 3 and 40 symbols"),
+  body('role').isLength({ min: 5, max: 10 }).withMessage("Role length must be between 5 and 10 symbols"),
   body('salary').isCurrency(),
   body('description')
 ];
@@ -34,17 +34,15 @@ router.put('/worker/:id', workerValidators, updateWorkerById);
 router.delete('/worker/:id', deleteWorkerById);
 
 const wareHouseValidators = [
-  body('name').isLength({ min: 3, max: 50 }),
+  body('name').isLength({ min: 3, max: 40 }).withMessage("Name length must be between 3 and 40 symbols"),
   body('rentalCost').isCurrency()
-  .custom((value) => {
-    const minValue = 0;
-    const numericValue = parseFloat(value);
+    .custom((value) => {
+      const minValue = 0;
+      const numericValue = parseFloat(value);
 
-    return numericValue < minValue ?
-      Promise.reject(`Rental cost must be more then ${minValue}`) :
-      true;
-  }),
-  body('assignmentDate').isDate(),
+      return numericValue >= minValue;
+    }).withMessage("Rental cost must be more then 0"),
+  body('assignmentDate').isDate().withMessage("Assignment Date has invalid date format"),
   body('productIds').isArray(),
   body('workerIds').isArray()
 ];

@@ -1,10 +1,15 @@
 import { ProductService } from '../services/productService.js';
+import { validationResult } from 'express-validator';
 import ProductDto from '../models/productDto.js';
 
 const productService = new ProductService();
 
 export async function addProduct(req, res, next) {
   try {
+    const validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty())
+      return res.json({ statusCode: 403, validationErrors });
+
     const response = await productService.addProduct(req);
     res.statusCode = response.statusCode;
     return res.json({ message: response.message, data: new ProductDto(response.data) });
@@ -35,6 +40,10 @@ export async function getProductById(req, res, next) {
 
 export async function updateProductById(req, res, next) {
   try {
+    const validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty())
+      return res.json({ statusCode: 403, validationErrors });
+
     const response = await productService.updateProductById(req);
     res.statusCode = response.statusCode;
     return res.json({ message: response.message, data: new ProductDto(response.data) });

@@ -3,28 +3,24 @@
     "firstName": "Oleg",
     "lastName": "Tinkov",
     "role": "director",
-    "salary": 3000,
-    "wareHouseId": 1
+    "salary": 3000
   },
   {
     "firstName": "Clara",
     "lastName": "Zaberman",
     "role": "manager",
-    "salary": 500,
-    "wareHouseId": 1
+    "salary": 500
   },
   {
     "firstName": "Irina",
     "lastName": "Idk",
     "role": "worker",
-    "salary": 300,
-    "wareHouseId": 1
+    "salary": 300
   },
   {
     "firstName": "Tihon",
     "lastName": "Grishin",
     "role": "worker",
-    "salary": 250,
-    "wareHouseId": 1
+    "salary": 250
   }
 ]

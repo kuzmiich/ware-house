@@ -1,3 +1,5 @@
+import { validationResult } from 'express-validator';
+
 import { WorkerService } from '../services/workerService.js';
 import WorkerDto from '../models/workerDto.js';
 
@@ -5,6 +7,10 @@ const workerService = new WorkerService();
 
 export async function addWorker(req, res, next) {
   try {
+    const validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty())
+      return res.json({ statusCode: 403, validationErrors });
+
     const response = await workerService.addWorker(req);
     res.statusCode = response.statusCode;
     return res.json({ message: response.message, data: new WorkerDto(response.data) });
@@ -35,6 +41,10 @@ export async function getWorkerById(req, res, next) {
 
 export async function updateWorkerById(req, res, next) {
   try {
+    const validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty())
+      return res.json({ statusCode: 403, validationErrors });
+
     const response = await workerService.updateWorkerById(req);
     res.statusCode = response.statusCode;
     return res.json({ message: response.message, data: new WorkerDto(response.data) });

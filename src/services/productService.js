@@ -23,10 +23,10 @@ export class ProductService {
   }
 
   async addProduct(req) {
-    const { title, nettoCost, actualPrice, description, wareHouseId } = req.body;
+    const { title, nettoCost, actualPrice, description } = req.body;
     const response = {};
 
-    const product = await this.productSchema.create({ title, nettoCost, actualPrice, description, wareHouseId });
+    const product = await this.productSchema.create({ title, nettoCost, actualPrice, description });
 
     if (!product) {
       response.message = ResponseHelper.serverError.message;
@@ -57,12 +57,12 @@ export class ProductService {
   }
 
   async updateProductById(req) {
-    const { title, nettoCost, actualPrice, description, wareHouseId } = req.body;
+    const { title, nettoCost, actualPrice, description } = req.body;
     const response = {};
     const { id } = req.params;
     
     const updatedProduct = await this.productSchema.findOneAndUpdate({ '_id': id },
-      { $set: { title, nettoCost, actualPrice, description, wareHouseId } },
+      { $set: { title, nettoCost, actualPrice, description } },
       { new: true });
 
     if (!updatedProduct) {

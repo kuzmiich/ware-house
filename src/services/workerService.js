@@ -23,10 +23,10 @@ export class WorkerService {
   }
 
   async addWorker(req) {
-    const { firstName, lastName, role, salary, wareHouseId } = req.body;
+    const { firstName, lastName, role, salary } = req.body;
     const response = {};
 
-    const addedWorker = await this.workerSchema.create({ firstName, lastName, role, salary, wareHouseId });
+    const addedWorker = await this.workerSchema.create({ firstName, lastName, role, salary });
 
     if (!addedWorker) {
       response.message = ResponseHelper.serverError.message;
@@ -57,12 +57,12 @@ export class WorkerService {
   }
 
   async updateWorkerById(req) {
-    const { firstName, lastName, role, salary, wareHouseId } = req.body;
+    const { firstName, lastName, role, salary } = req.body;
     const response = {};
     const { id } = req.params;
     
     const updatedWorker = await this.workerSchema.findOneAndUpdate({ '_id': id },
-      { $set: { firstName, lastName, role, salary, wareHouseId } },
+      { $set: { firstName, lastName, role, salary } },
       { new: true });
 
     if (!updatedWorker) {

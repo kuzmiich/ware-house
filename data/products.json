@@ -3,21 +3,18 @@
     "title": "table AAA",
     "nettoCost": 50,
     "actualPrice": 80,
-    "description": "This is a very good table",
-    "wareHouseId": 1
+    "description": "This is a very good table"
   },
   {
     "title": "pen ABC",
     "nettoCost": 1,
     "actualPrice": 3,
-    "description": "This is a very good pen",
-    "wareHouseId": 1
+    "description": "This is a very good pen"
   },
   {
     "title": "chair DDD",
     "nettoCost": 10,
     "actualPrice": 40,
-    "description": "This is a very good chair",
-    "wareHouseId": 1
+    "description": "This is a very good chair"
   }
 ]

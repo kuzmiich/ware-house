@@ -3,7 +3,7 @@
     "name": "table AAA",
     "rentalCost": 50,
     "assignmentDate": "20.03.2000",
-    "products": [],
-    "workers": []
+    "productIds": [],
+    "workerIds": []
   }
 ]

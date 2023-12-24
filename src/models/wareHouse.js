@@ -13,11 +13,11 @@ const WareHouseSchema = new Schema({
 		type: Date,
 		required: true
 	},
-  products: {
+  productIds: {
     type: [],
     required: false
   },
-  workers: {
+  workerIds: {
     type: [],
     required: false
   },
@@ -25,6 +25,5 @@ const WareHouseSchema = new Schema({
 {
 	collection: 'wareHouses'
 });
-
 
 export default mongoose.model('WareHouse', WareHouseSchema);

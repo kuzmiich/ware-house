@@ -22,11 +22,11 @@ export class WareHouseService {
     return response;
   }
 
-  async addWareHouse(req, products, workers) {
-    const { name, rentalCost, assignmentDate } = req.body;
+  async addWareHouse(req) {
+    const { name, rentalCost, assignmentDate, productIds, workerIds } = req.body;
     const response = {};
-
-    const addedWorker = await this.wareHouseSchema.create({ name, rentalCost, assignmentDate, products, workers });
+    
+    const addedWorker = await this.wareHouseSchema.create({ name, rentalCost, assignmentDate, productIds, workerIds });
 
     if (!addedWorker) {
       response.message = ResponseHelper.serverError.message;
@@ -39,13 +39,13 @@ export class WareHouseService {
     return response;
   }
 
-  async updateWareHouseById(req, products, workers) {
-    const { name, rentalCost, assignmentDate }  = req.body;
+  async updateWareHouseById(req) {
+    const { name, rentalCost, assignmentDate, productIds, workerIds }  = req.body;
     const response = {};
     const { id } = req.params;
     
     const updatedWorker = await this.wareHouseSchema.findOneAndUpdate({ '_id': id },
-      { $set: { name, rentalCost, assignmentDate, products, workers } },
+      { $set: { name, rentalCost, assignmentDate, productIds, workerIds } },
       { new: true });
 
     if (!updatedWorker) {

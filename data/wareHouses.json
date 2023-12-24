@@ -3,58 +3,7 @@
     "name": "table AAA",
     "rentalCost": 50,
     "assignmentDate": "20.03.2000",
-    "products": [
-      {
-        "title": "table AAA",
-        "nettoCost": 50,
-        "actualPrice": 80,
-        "description": "This is a very good table",
-        "wareHouseId": 1
-      },
-      {
-        "title": "pen ABC",
-        "nettoCost": 1,
-        "actualPrice": 3,
-        "description": "This is a very good pen",
-        "wareHouseId": 1
-      },
-      {
-        "title": "chair DDD",
-        "nettoCost": 10,
-        "actualPrice": 40,
-        "description": "This is a very good chair",
-        "wareHouseId": 1
-      }
-    ],
-    "workers": [
-      {
-        "firstName": "Oleg",
-        "lastName": "Tinkov",
-        "role": "director",
-        "salary": 3000,
-        "wareHouseId": 1
-      },
-      {
-        "firstName": "Clara",
-        "lastName": "Zaberman",
-        "role": "manager",
-        "salary": 500,
-        "wareHouseId": 1
-      },
-      {
-        "firstName": "Irina",
-        "lastName": "Idk",
-        "role": "worker",
-        "salary": 300,
-        "wareHouseId": 1
-      },
-      {
-        "firstName": "Tihon",
-        "lastName": "Grishin",
-        "role": "worker",
-        "salary": 250,
-        "wareHouseId": 1
-      }
-    ]
+    "products": [],
+    "workers": []
   }
 ]

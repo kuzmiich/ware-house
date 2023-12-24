@@ -27,5 +27,4 @@ const WorkerSchema = new Schema({
 	collection: 'workers'
 });
 
-
 export default mongoose.model('Worker', WorkerSchema);

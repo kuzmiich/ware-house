@@ -13,10 +13,9 @@ class Server {
   }
 
   build() {
-
-    console.log(`Environment - '${process.env.NODE_ENV}'`); // to use NODE_ENV need to install -> npm install -g win-node-env
-
-    dotenv.config({ path: `./src/environments/.env.${process.env.NODE_ENV ?? 'test'}` });
+    console.log(`Environment - '${process.env.NODE_ENV}'`);
+    
+    dotenv.config();
 
     this.app.use(express.json());
 

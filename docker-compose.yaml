@@ -1,0 +1,40 @@
+version: '1'
+services:
+  warehouse:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: warehouse
+    restart: unless-stopped
+    environment:
+      - MONGO_USERNAME=user
+      - MONGO_PASSWORD=pass
+      - MONGO_HOSTNAME=db
+      - MONGO_PORT=3030
+      - MONGO_DB=WareHouse
+    ports:
+      - "3030:3030"
+    volumes:
+      - dbdata:/data/db 
+    networks:
+      - app-network
+    command: node ./src/server.js
+
+  mongodb:
+    container_name: mongodb-instance
+    image: mongodb/mongodb-community-server:6.0-ubi8
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    volumes:
+      - type: bind
+        source: ./data/src
+        target: /data/src/db
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+  node_modules:  

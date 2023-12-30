@@ -2,7 +2,7 @@
   "type": "module",
   "scripts": {
     "prod": "node ./src/server.js",
-    "start": "node ./src/server.js",
+    "start": "NODE_ENV=development node ./src/server.js",
     "watch": "nodemon src/server.js"
   },
   "dependencies": {

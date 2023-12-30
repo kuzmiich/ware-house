@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: warehouse-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ware-house
+  template:
+    metadata:
+      labels:
+        app: ware-house
+    spec:
+      containers:
+      - name: ware-house
+        image: opna/warehouse:latest
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: warehouse-service
+spec:
+  selector:
+    app: ware-house
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 3000
+      nodePort: 31110

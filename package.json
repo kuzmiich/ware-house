@@ -1,10 +1,9 @@
 {
   "type": "module",
   "scripts": {
-    "prod": "NODE_ENV=production node ./src/server.js",
-    "test": "NODE_ENV=test node ./src/server.js",
+    "prod": "node ./src/server.js",
     "start": "NODE_ENV=development node ./src/server.js",
-    "watch": "NODE_ENV=development nodemon src/server.js"
+    "watch": "nodemon src/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

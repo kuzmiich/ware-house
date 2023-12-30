@@ -13,10 +13,9 @@ class Server {
   }
 
   build() {
-
-    console.log(`Environment - '${process.env.NODE_ENV}'`); // to use NODE_ENV need to install -> npm install -g win-node-env
-
-    dotenv.config({ path: `./src/environments/.env.${process.env.NODE_ENV ?? 'test'}` });
+    console.log(`Environment - '${process.env.NODE_ENV}'`);
+    
+    dotenv.config({ path: `./src/environments/.env.${process.env.NODE_ENV ?? 'development'}` });
 
     this.app.use(express.json());
 
@@ -58,7 +57,8 @@ class Server {
 
     const port = process.env.API_PORT || 1818;
 
-    this.app.listen(port, () => {
+    this.app.listen(port, (x) => {
+      console.log()
       console.log(`User server started and listening on port - ${port}`);
     });
   }
